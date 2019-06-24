@@ -19,8 +19,10 @@ public class CommentEntity {
     @Column(name = "comment_id")
     private int commentId;
 
-    @Column(name = "user_id")
-    private int userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    private UserEntity user;
 
     @Column(name = "feed_id")
     private int feedId;
@@ -37,8 +39,8 @@ public class CommentEntity {
     public CommentEntity() {
     }
 
-    public CommentEntity(int userId, int feedId, String body, int likes, Date createdTime) {
-        this.userId = userId;
+    public CommentEntity(UserEntity user, int feedId, String body, int likes, Date createdTime) {
+        this.user = user;
         this.feedId = feedId;
         this.body = body;
         this.likes = likes;
@@ -53,12 +55,12 @@ public class CommentEntity {
         this.commentId = commentId;
     }
 
-    public int getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public int getFeedId() {

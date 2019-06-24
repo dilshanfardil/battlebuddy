@@ -19,8 +19,9 @@ public class FeedEntity {
     @Column(name = "feed_id")
     private int feedId;
 
-    @Column(name = "user_id")
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    private UserEntity user;
 
     @Column(name = "title")
     private String title;
@@ -37,8 +38,8 @@ public class FeedEntity {
     public FeedEntity() {
     }
 
-    public FeedEntity(int userId, String title, byte[] video, int likes, String text) {
-        this.userId = userId;
+    public FeedEntity(UserEntity user, String title, byte[] video, int likes, String text) {
+        this.user = user;
         this.title = title;
         this.video = video;
         this.likes = likes;
@@ -53,13 +54,14 @@ public class FeedEntity {
         this.feedId = feedId;
     }
 
-    public int getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
+
 
     public String getTitle() {
         return title;

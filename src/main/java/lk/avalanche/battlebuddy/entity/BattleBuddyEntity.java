@@ -18,8 +18,9 @@ public class BattleBuddyEntity {
     @Column(name = "battel_buddy_id")
     private int battleBuddyId;
 
-    @Column(name = "user_id")
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    private UserEntity user;
 
     @Column(name = "console")
     private String console;
@@ -42,8 +43,8 @@ public class BattleBuddyEntity {
     public BattleBuddyEntity() {
     }
 
-    public BattleBuddyEntity(int userId, String console, String region, String gameName, int voiceChat, String language, String text) {
-        this.userId = userId;
+    public BattleBuddyEntity(UserEntity user, String console, String region, String gameName, int voiceChat, String language, String text) {
+        this.user = user;
         this.console = console;
         this.region = region;
         this.gameName = gameName;
@@ -60,12 +61,12 @@ public class BattleBuddyEntity {
         this.battleBuddyId = battleBuddyId;
     }
 
-    public int getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public String getConsole() {

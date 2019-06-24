@@ -19,11 +19,14 @@ public class SubCommentEntity {
     @Column(name = "user_id")
     private int subCommentId;
 
-    @Column(name = "user_id")
-    private int userId;
 
-    @Column(name = "comment_id")
-    private int commentId;
+    @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    private UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "comment_id",referencedColumnName = "comment_id")
+    private CommentEntity comment;
 
     @Column(name = "body")
     private String body;
@@ -37,9 +40,9 @@ public class SubCommentEntity {
     public SubCommentEntity() {
     }
 
-    public SubCommentEntity(int userId, int commentId, String body, int likes, Date createdTime) {
-        this.userId = userId;
-        this.commentId = commentId;
+    public SubCommentEntity(UserEntity user, CommentEntity comment, String body, int likes, Date createdTime) {
+        this.user = user;
+        this.comment = comment;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;
@@ -53,20 +56,20 @@ public class SubCommentEntity {
         this.subCommentId = subCommentId;
     }
 
-    public int getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
-    public int getCommentId() {
-        return commentId;
+    public CommentEntity getComment() {
+        return comment;
     }
 
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
+    public void setComment(CommentEntity comment) {
+        this.comment = comment;
     }
 
     public String getBody() {
