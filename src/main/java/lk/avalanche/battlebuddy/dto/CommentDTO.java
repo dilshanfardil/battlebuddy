@@ -1,56 +1,45 @@
-package lk.avalanche.battlebuddy.entity;
+package lk.avalanche.battlebuddy.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * Created by Avalanche Pvt.Ltd.
  * User: Dilshan.Fardil
  * Date: 6/24/2019
- * Time: 12:12 AM}
+ * Time: 9:59 PM}
  */
 
-@Entity
-@Table(name = "subcomment")
-public class SubCommentEntity {
 
-    @Id
-    @GeneratedValue()
-    @Column(name = "user_id")
-    private int subCommentId;
+public class CommentDTO extends SuperDTO {
 
-    @Column(name = "user_id")
-    private int userId;
-
-    @Column(name = "comment_id")
     private int commentId;
-
-    @Column(name = "body")
+    private int userId;
+    private int feedId;
     private String body;
-
-    @Column(name = "likes")
     private int likes;
-
-    @Column(name = "created_time")
     private Date createdTime;
 
-    public SubCommentEntity() {
+    public CommentDTO() {
     }
 
-    public SubCommentEntity(int userId, int commentId, String body, int likes, Date createdTime) {
-        this.userId = userId;
+    public CommentDTO(int commentId, int userId, int feedId, String body, int likes, Date createdTime) {
         this.commentId = commentId;
+        this.userId = userId;
+        this.feedId = feedId;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;
     }
 
-    public int getSubCommentId() {
-        return subCommentId;
+    public int getCommentId() {
+        return commentId;
     }
 
-    public void setSubCommentId(int subCommentId) {
-        this.subCommentId = subCommentId;
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
     }
 
     public int getUserId() {
@@ -61,12 +50,12 @@ public class SubCommentEntity {
         this.userId = userId;
     }
 
-    public int getCommentId() {
-        return commentId;
+    public int getFeedId() {
+        return feedId;
     }
 
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
+    public void setFeedId(int feedId) {
+        this.feedId = feedId;
     }
 
     public String getBody() {

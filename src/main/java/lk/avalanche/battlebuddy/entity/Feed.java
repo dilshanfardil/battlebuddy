@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "feed")
-public class FeedEntity {
+public class Feed {
 
     @Id
     @GeneratedValue()
@@ -34,10 +34,10 @@ public class FeedEntity {
     @Column(name = "text")
     private String text;
 
-    public FeedEntity() {
+    public Feed() {
     }
 
-    public FeedEntity(int userId, String title, byte[] video, int likes, String text) {
+    public Feed(int userId, String title, byte[] video, int likes, String text) {
         this.userId = userId;
         this.title = title;
         this.video = video;

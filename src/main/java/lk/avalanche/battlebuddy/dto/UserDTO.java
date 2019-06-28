@@ -1,36 +1,29 @@
-package lk.avalanche.battlebuddy.entity;
+package lk.avalanche.battlebuddy.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by Avalanche Pvt.Ltd.
  * User: Dilshan.Fardil
- * Date: 6/23/2019
- * Time: 11:43 PM}
+ * Date: 6/24/2019
+ * Time: 10:00 PM}
  */
 
-@Entity
-@Table(name = "user")
-public class UserEntity {
 
-    @Id
-    @GeneratedValue()
-    @Column(name = "user_id")
+public class UserDTO extends SuperDTO {
+
     private int UserId;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "user_name")
     private String userName;
-
-    @Column(name = "password")
     private String password;
 
-    public UserEntity() {
+    public UserDTO() {
     }
 
-    public UserEntity(String name, String userName, String password) {
+    public UserDTO(int userId, String name, String userName, String password) {
+        UserId = userId;
         this.name = name;
         this.userName = userName;
         this.password = password;
