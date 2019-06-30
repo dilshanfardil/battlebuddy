@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "subcomment")
-public class SubCommentEntity {
+public class SubComment {
 
     @Id
     @GeneratedValue()
@@ -37,12 +37,12 @@ public class SubCommentEntity {
     @Column(name = "created_time")
     private Date createdTime;
 
-    public SubCommentEntity() {
+    public SubComment() {
     }
 
-    public SubCommentEntity(UserEntity user, CommentEntity comment, String body, int likes, Date createdTime) {
-        this.user = user;
-        this.comment = comment;
+    public SubComment(int userId, int commentId, String body, int likes, Date createdTime) {
+        this.userId = userId;
+        this.commentId = commentId;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;

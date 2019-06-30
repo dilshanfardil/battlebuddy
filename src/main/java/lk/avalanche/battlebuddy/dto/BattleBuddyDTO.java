@@ -1,50 +1,34 @@
-package lk.avalanche.battlebuddy.entity;
+package lk.avalanche.battlebuddy.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by Avalanche Pvt.Ltd.
  * User: Dilshan.Fardil
- * Date: 6/23/2019
- * Time: 11:47 PM}
+ * Date: 6/24/2019
+ * Time: 9:59 PM}
  */
 
-@Entity
-@Table(name = "battelbuddy")
-public class BattleBuddyEntity {
 
-    @Id
-    @GeneratedValue()
-    @Column(name = "battel_buddy_id")
+public class BattleBuddyDTO extends SuperDTO {
+
     private int battleBuddyId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-    private UserEntity user;
-
-    @Column(name = "console")
+    private int userId;
     private String console;
-
-    @Column(name = "region")
     private String region;
-
-    @Column(name = "game_name")
     private String gameName;
-
-    @Column(name = "voice_chat")
     private int voiceChat;
-
-    @Column(name = "language")
     private String language;
-
-    @Column(name = "text")
     private String text;
 
-    public BattleBuddyEntity() {
+    public BattleBuddyDTO() {
     }
 
-    public BattleBuddyEntity(UserEntity user, String console, String region, String gameName, int voiceChat, String language, String text) {
-        this.user = user;
+    public BattleBuddyDTO(int battleBuddyId, int userId, String console, String region, String gameName, int voiceChat, String language, String text) {
+        this.battleBuddyId = battleBuddyId;
+        this.userId = userId;
         this.console = console;
         this.region = region;
         this.gameName = gameName;
@@ -61,12 +45,12 @@ public class BattleBuddyEntity {
         this.battleBuddyId = battleBuddyId;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getConsole() {

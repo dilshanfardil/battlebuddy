@@ -1,45 +1,28 @@
-package lk.avalanche.battlebuddy.entity;
-
-import javax.persistence.*;
+package lk.avalanche.battlebuddy.dto;
 
 /**
  * Created by Avalanche Pvt.Ltd.
  * User: Dilshan.Fardil
  * Date: 6/24/2019
- * Time: 12:08 AM}
+ * Time: 9:59 PM}
  */
 
 
-@Entity
-@Table(name = "feed")
-public class FeedEntity {
+public class FeedDTO extends SuperDTO {
 
-    @Id
-    @GeneratedValue()
-    @Column(name = "feed_id")
     private int feedId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-    private UserEntity user;
-
-    @Column(name = "title")
+    private int userId;
     private String title;
-
-    @Column(name = "video")
     private byte[] video;
-
-    @Column(name = "likes")
     private int likes;
-
-    @Column(name = "text")
     private String text;
 
-    public FeedEntity() {
+    public FeedDTO() {
     }
 
-    public FeedEntity(UserEntity user, String title, byte[] video, int likes, String text) {
-        this.user = user;
+    public FeedDTO(int feedId, int userId, String title, byte[] video, int likes, String text) {
+        this.feedId = feedId;
+        this.userId = userId;
         this.title = title;
         this.video = video;
         this.likes = likes;
@@ -54,14 +37,13 @@ public class FeedEntity {
         this.feedId = feedId;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-
 
     public String getTitle() {
         return title;

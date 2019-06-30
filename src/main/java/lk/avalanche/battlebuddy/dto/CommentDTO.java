@@ -1,46 +1,33 @@
-package lk.avalanche.battlebuddy.entity;
+package lk.avalanche.battlebuddy.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * Created by Avalanche Pvt.Ltd.
  * User: Dilshan.Fardil
  * Date: 6/24/2019
- * Time: 12:00 AM}
+ * Time: 9:59 PM}
  */
 
-@Entity
-@Table(name = "comment")
-public class CommentEntity {
 
-    @Id
-    @GeneratedValue()
-    @Column(name = "comment_id")
+public class CommentDTO extends SuperDTO {
+
     private int commentId;
-
-
-    @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-    private UserEntity user;
-
-    @Column(name = "feed_id")
+    private int userId;
     private int feedId;
-
-    @Column(name = "body")
     private String body;
-
-    @Column(name = "likes")
     private int likes;
-
-    @Column(name = "created_time")
     private Date createdTime;
 
-    public CommentEntity() {
+    public CommentDTO() {
     }
 
-    public CommentEntity(UserEntity user, int feedId, String body, int likes, Date createdTime) {
-        this.user = user;
+    public CommentDTO(int commentId, int userId, int feedId, String body, int likes, Date createdTime) {
+        this.commentId = commentId;
+        this.userId = userId;
         this.feedId = feedId;
         this.body = body;
         this.likes = likes;
@@ -55,12 +42,12 @@ public class CommentEntity {
         this.commentId = commentId;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getFeedId() {
