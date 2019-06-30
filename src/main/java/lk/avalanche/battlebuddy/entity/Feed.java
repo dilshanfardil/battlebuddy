@@ -21,7 +21,7 @@ public class Feed {
 
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-    private UserEntity user;
+    private User user;
 
     @Column(name = "title")
     private String title;
@@ -38,8 +38,8 @@ public class Feed {
     public Feed() {
     }
 
-    public Feed(int userId, String title, byte[] video, int likes, String text) {
-        this.userId = userId;
+    public Feed(User userId, String title, byte[] video, int likes, String text) {
+        this.user = userId;
         this.title = title;
         this.video = video;
         this.likes = likes;
@@ -54,11 +54,11 @@ public class Feed {
         this.feedId = feedId;
     }
 
-    public UserEntity getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

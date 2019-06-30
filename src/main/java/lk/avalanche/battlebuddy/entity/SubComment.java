@@ -22,11 +22,11 @@ public class SubComment {
 
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-    private UserEntity user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "comment_id",referencedColumnName = "comment_id")
-    private CommentEntity comment;
+    private Comment comment;
 
     @Column(name = "body")
     private String body;
@@ -40,9 +40,9 @@ public class SubComment {
     public SubComment() {
     }
 
-    public SubComment(int userId, int commentId, String body, int likes, Date createdTime) {
-        this.userId = userId;
-        this.commentId = commentId;
+    public SubComment(User userId, Comment commentId, String body, int likes, Date createdTime) {
+        this.user = userId;
+        this.comment = commentId;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;
@@ -56,19 +56,19 @@ public class SubComment {
         this.subCommentId = subCommentId;
     }
 
-    public UserEntity getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public CommentEntity getComment() {
+    public Comment getComment() {
         return comment;
     }
 
-    public void setComment(CommentEntity comment) {
+    public void setComment(Comment comment) {
         this.comment = comment;
     }
 
