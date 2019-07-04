@@ -1,5 +1,7 @@
 package lk.avalanche.battlebuddy.entity;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 
 /**
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
+    public static BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder(11);
 
     @Id
     @GeneratedValue()
@@ -21,8 +24,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -32,8 +35,8 @@ public class User {
 
     public User(String name, String userName, String password) {
         this.name = name;
-        this.userName = userName;
-        this.password = password;
+        this.username = userName;
+        setPassword(password);
     }
 
     public int getUserId() {
@@ -53,11 +56,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -65,6 +68,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+
+        this.password = passwordEncoder.encode(password);
     }
 }

@@ -2,6 +2,7 @@ package lk.avalanche.battlebuddy.service.custom;
 
 import lk.avalanche.battlebuddy.dto.BattleBuddyDTO;
 import lk.avalanche.battlebuddy.service.SuperService;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Avalanche Pvt.Ltd.
@@ -10,6 +11,6 @@ import lk.avalanche.battlebuddy.service.SuperService;
  * Time: 8:28 PM}
  */
 
-
-public interface BattleBuddyRepository extends SuperService<BattleBuddyDTO> {
+@Service
+public interface BattleBuddyService extends SuperService<BattleBuddyDTO> {
 }

@@ -4,6 +4,7 @@ import lk.avalanche.battlebuddy.dto.UserDTO;
 import lk.avalanche.battlebuddy.entity.User;
 import lk.avalanche.battlebuddy.service.SuperService;
 import net.bytebuddy.implementation.bind.annotation.Super;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Avalanche Pvt.Ltd.
@@ -12,6 +13,6 @@ import net.bytebuddy.implementation.bind.annotation.Super;
  * Time: 8:24 PM}
  */
 
-
+@Service
 public interface UserService extends SuperService<UserDTO> {
 }

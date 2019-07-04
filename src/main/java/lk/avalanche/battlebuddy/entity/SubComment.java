@@ -16,7 +16,7 @@ public class SubComment {
 
     @Id
     @GeneratedValue()
-    @Column(name = "user_id")
+    @Column(name = "sub_comment_id")
     private int subCommentId;
 
 
@@ -43,6 +43,15 @@ public class SubComment {
     public SubComment(User userId, Comment commentId, String body, int likes, Date createdTime) {
         this.user = userId;
         this.comment = commentId;
+        this.body = body;
+        this.likes = likes;
+        this.createdTime = createdTime;
+    }
+
+    public SubComment(int subCommentId, User user, Comment comment, String body, int likes, Date createdTime) {
+        this.subCommentId=subCommentId;
+        this.user = user;
+        this.comment = comment;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;

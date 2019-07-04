@@ -53,6 +53,17 @@ public class BattleBuddy {
         this.text = text;
     }
 
+    public BattleBuddy(int battleBuddyId, User user, String console, String region, String gameName, int voiceChat, String language, String text) {
+        this.battleBuddyId=battleBuddyId;
+        this.user = user;
+        this.console = console;
+        this.region = region;
+        this.gameName = gameName;
+        this.voiceChat = voiceChat;
+        this.language = language;
+        this.text = text;
+    }
+
     public int getBattleBuddyId() {
         return battleBuddyId;
     }

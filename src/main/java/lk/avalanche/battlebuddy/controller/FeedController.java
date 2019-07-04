@@ -1,7 +1,7 @@
 package lk.avalanche.battlebuddy.controller;
 
-import lk.avalanche.battlebuddy.dto.UserDTO;
-import lk.avalanche.battlebuddy.service.custom.UserService;
+import lk.avalanche.battlebuddy.dto.FeedDTO;
+import lk.avalanche.battlebuddy.service.custom.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,49 +9,42 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by Avalanche Pvt.Ltd.
- * User: Dilshan.Fardil
- * Date: 6/23/2019
- * Time: 11:08 PM}
- */
-
 @CrossOrigin
 @RestController
-@RequestMapping("api/v1/user")
-public class UserController {
+@RequestMapping("api/v1/feed")
+public class FeedController {
     @Autowired
-    UserService userService;
+    FeedService feedService;
 
-//    @GetMapping
-//    @ResponseBody
-//    public List<UserDTO> getCompanies(){
-//        return userService.findAll();
-//    }
+    @GetMapping
+    @ResponseBody
+    public List<FeedDTO> getCompanies(){
+        return feedService.findAll();
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity insert(@RequestBody UserDTO UserDTO){
-        userService.insert(UserDTO);
+    public ResponseEntity insert(@RequestBody FeedDTO FeedDTO){
+        feedService.insert(FeedDTO);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public UserDTO getCompanyId(@PathVariable("id") int id){
-        return userService.getrById(id);
+    public FeedDTO getCompanyId(@PathVariable("id") int id){
+        return feedService.getrById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/{id}")
-    public ResponseEntity updateCompany(@RequestBody UserDTO UserDTO){
-        userService.update(UserDTO);
+    public ResponseEntity updateCompany(@RequestBody FeedDTO FeedDTO){
+        feedService.update(FeedDTO);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCompany(@PathVariable int id){
-        userService.delete(id);
+        feedService.delete(id);
         return  new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

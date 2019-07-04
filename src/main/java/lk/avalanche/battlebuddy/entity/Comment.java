@@ -47,6 +47,15 @@ public class Comment {
         this.createdTime = createdTime;
     }
 
+    public Comment(int commentId, User user, int feedId, String body, int likes, Date createdTime) {
+        this.commentId=commentId;
+        this.user = user;
+        this.feedId = feedId;
+        this.body = body;
+        this.likes = likes;
+        this.createdTime = createdTime;
+    }
+
     public int getCommentId() {
         return commentId;
     }

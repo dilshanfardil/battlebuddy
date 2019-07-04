@@ -1,5 +1,6 @@
 package lk.avalanche;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -9,9 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Time: 10:59 PM}
  */
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={"lk.avalanche.battlebuddy"})
 public class AppInitializer {
     public static void main(String[] args) {
-
+        SpringApplication.run(AppInitializer.class, args);
     }
 }
+

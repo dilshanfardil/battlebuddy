@@ -46,6 +46,15 @@ public class Feed {
         this.text = text;
     }
 
+    public Feed(int feedId, User user, String title, byte[] video, int likes, String text) {
+        this.feedId=feedId;
+        this.user = user;
+        this.title = title;
+        this.video = video;
+        this.likes = likes;
+        this.text = text;
+    }
+
     public int getFeedId() {
         return feedId;
     }

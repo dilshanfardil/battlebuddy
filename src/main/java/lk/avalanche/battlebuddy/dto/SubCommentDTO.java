@@ -1,5 +1,8 @@
 package lk.avalanche.battlebuddy.dto;
 
+import lk.avalanche.battlebuddy.entity.Comment;
+import lk.avalanche.battlebuddy.entity.User;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,8 +19,8 @@ import java.util.Date;
 public class SubCommentDTO extends SuperDTO {
 
     private int subCommentId;
-    private int userId;
-    private int commentId;
+    private User user;
+    private Comment comment;
     private String body;
     private int likes;
     private Date createdTime;
@@ -25,10 +28,10 @@ public class SubCommentDTO extends SuperDTO {
     public SubCommentDTO() {
     }
 
-    public SubCommentDTO(int subCommentId, int userId, int commentId, String body, int likes, Date createdTime) {
+    public SubCommentDTO(int subCommentId, User user, Comment comment, String body, int likes, Date createdTime) {
         this.subCommentId = subCommentId;
-        this.userId = userId;
-        this.commentId = commentId;
+        this.user = user;
+        this.comment = comment;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;
@@ -42,20 +45,20 @@ public class SubCommentDTO extends SuperDTO {
         this.subCommentId = subCommentId;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getCommentId() {
-        return commentId;
+    public Comment getComment() {
+        return comment;
     }
 
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     public String getBody() {

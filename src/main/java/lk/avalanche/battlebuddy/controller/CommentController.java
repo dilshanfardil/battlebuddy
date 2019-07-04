@@ -1,7 +1,7 @@
 package lk.avalanche.battlebuddy.controller;
 
-import lk.avalanche.battlebuddy.dto.UserDTO;
-import lk.avalanche.battlebuddy.service.custom.UserService;
+import lk.avalanche.battlebuddy.dto.CommentDTO;
+import lk.avalanche.battlebuddy.service.custom.CommentServiece;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,49 +9,42 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by Avalanche Pvt.Ltd.
- * User: Dilshan.Fardil
- * Date: 6/23/2019
- * Time: 11:08 PM}
- */
-
 @CrossOrigin
 @RestController
-@RequestMapping("api/v1/user")
-public class UserController {
+@RequestMapping("api/v1/comment")
+public class CommentController {
     @Autowired
-    UserService userService;
+    CommentServiece commentServiece;
 
-//    @GetMapping
-//    @ResponseBody
-//    public List<UserDTO> getCompanies(){
-//        return userService.findAll();
-//    }
+    @GetMapping
+    @ResponseBody
+    public List<CommentDTO> getCompanies(){
+        return commentServiece.findAll();
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity insert(@RequestBody UserDTO UserDTO){
-        userService.insert(UserDTO);
+    public ResponseEntity insert(@RequestBody CommentDTO CommentDTO){
+        commentServiece.insert(CommentDTO);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public UserDTO getCompanyId(@PathVariable("id") int id){
-        return userService.getrById(id);
+    public CommentDTO getCompanyId(@PathVariable("id") int id){
+        return commentServiece.getrById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/{id}")
-    public ResponseEntity updateCompany(@RequestBody UserDTO UserDTO){
-        userService.update(UserDTO);
+    public ResponseEntity updateCompany(@RequestBody CommentDTO CommentDTO){
+        commentServiece.update(CommentDTO);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCompany(@PathVariable int id){
-        userService.delete(id);
+        commentServiece.delete(id);
         return  new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
